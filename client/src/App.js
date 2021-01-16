@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import logo from "./logo.png";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import { Route } from "react-router-dom";
 
 import Launches from "./component/Launches";
+import Launch from "./component/Launch";
 
 const client = new ApolloClient({
   uri: "http://localhost:5000/graphql",
@@ -18,7 +20,8 @@ class App extends Component {
             alt="SpaceX"
             style={{ width: 300, display: "block", margin: "auto" }}
           />
-          <Launches />
+          <Route exact path="/" component={Launches} />
+          <Route exact path="/launch/:flight_number" component={Launch} />
         </div>
       </ApolloProvider>
     );
